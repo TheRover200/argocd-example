@@ -1,0 +1,21 @@
+# Create 6 nginx pods
+
+apiVersion: apps/v1 #for deployment, we have to specify version like this
+kind: Deployment #Deployment in kubernetes is a collection of pods
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 5
+  selector: 
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx 
+
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest #create container using this image
